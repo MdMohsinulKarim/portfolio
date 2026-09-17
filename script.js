@@ -26,11 +26,31 @@ if (drawer && scrim && openDrawer && closeDrawerBtn) {
 // theme toggle
 const themeBtn = document.getElementById('themeToggle');
 
+// Load saved theme
+const savedTheme = localStorage.getItem('theme');
+
+if (savedTheme === 'light') {
+  document.body.classList.add('light');
+}
+
 if (themeBtn) {
+
+  // Set correct icon on page load
+  themeBtn.innerHTML = document.body.classList.contains('light')
+    ? '<i class="fa-solid fa-sun"></i>'
+    : '<i class="fa-regular fa-moon"></i>';
+
   themeBtn.addEventListener('click', ()=>{
+
     document.body.classList.toggle('light');
 
-    themeBtn.innerHTML = document.body.classList.contains('light')
+    const isLight = document.body.classList.contains('light');
+
+    // Save theme preference
+    localStorage.setItem('theme', isLight ? 'light' : 'dark');
+
+    // Update icon
+    themeBtn.innerHTML = isLight
       ? '<i class="fa-solid fa-sun"></i>'
       : '<i class="fa-regular fa-moon"></i>';
   });

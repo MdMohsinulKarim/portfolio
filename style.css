@@ -15,6 +15,13 @@
 }
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
+*, *::before, *::after{
+  transition:
+    background-color .6s ease,
+    color .6s ease,
+    border-color .6s ease,
+    box-shadow .6s ease;
+}
 body{
   background:var(--bg);
   color:var(--text);
@@ -23,12 +30,23 @@ body{
   overflow-x:hidden;
 }
 body.light{
-  --bg:#f5f5f7;
+  --bg:#f7f7f9;
   --panel:#ffffff;
-  --panel-2:#f0f0f4;
-  --line:rgba(0,0,0,.08);
-  --text:#121218;
-  --muted:#5b5d6b;
+  --panel-2:#eeeeF3;
+
+  --line:rgba(17,17,22,.11);
+
+  --text:#111116;
+  --muted:#3f414b;
+
+  /* Stronger light-mode accents */
+  --purple:#7c3aed;
+  --blue:#2563eb;
+  --green:#16a34a;
+  --pink:#db2777;
+
+  --grad:linear-gradient(90deg,#7c3aed,#2563eb);
+  --grad2:linear-gradient(135deg,#7c3aed,#db2777);
 }
 h1,h2,h3,h4{font-family:'Space Grotesk',sans-serif;}
 .hand{font-family:'Caveat',cursive; font-weight:600;}
@@ -841,4 +859,95 @@ body.light .tool:hover{
   color:#ffffff !important;
   border:1px solid rgba(255,255,255,.15);
   box-shadow:0 4px 12px rgba(0,0,0,.25);
+}
+
+/* ---------- LIGHT MODE TYPOGRAPHY ---------- */
+
+body.light h1,
+body.light h2,
+body.light h3,
+body.light h4{
+  color:var(--text);
+}
+
+body.light .nav-links a,
+body.light .view-all,
+body.light .socials a{
+  color:var(--muted);
+}
+
+body.light .nav-links a:hover,
+body.light .nav-links a.active,
+body.light .socials a:hover{
+  color:var(--text);
+}
+
+body.light .hero p.desc,
+body.light .about-top p,
+body.light .card p,
+body.light .proj-body p,
+body.light .timeline-item span,
+body.light .tool span,
+body.light .project-count{
+  color:var(--muted);
+}
+
+body.light .tag{
+  color:#4b4d58;
+  border-color:rgba(17,17,22,.12);
+}
+
+body.light .float-tag{
+  color:#3f414b;
+  box-shadow:0 10px 30px rgba(20,20,40,.12);
+}
+
+body.light .float-tag.t1{
+  color:var(--text);
+}
+
+body.light .float-tag.t2 b{
+  color:var(--text);
+}
+
+body.light .proj-link{
+  color:#6d28d9;
+}
+
+body.light .hand-note{
+  color:#15803d;
+}
+/* ---------- VIEW ALL PROJECTS POSITION ---------- */
+
+#projects .wrap{
+  position:relative;
+}
+
+#projects .sec-head-row{
+  padding-right:120px;
+}
+
+#projects .view-all{
+  position:absolute;
+  top:50px;
+  right:35px;
+}
+
+/* Mobile: View All below all featured project cards */
+@media (max-width:968px){
+  #projects .sec-head-row{
+    padding-right:0;
+  }
+
+  #projects .view-all{
+    position:static;
+    display:flex;
+    justify-content:center;
+    width:100%;
+    margin-top:26px;
+    padding:12px 20px;
+    border:1px solid var(--line);
+    border-radius:999px;
+    background:var(--panel);
+  }
 }
