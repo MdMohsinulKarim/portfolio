@@ -768,3 +768,38 @@ body.light .contact-visual{
 body.light .contact-visual span{
   color:#30303a;
 }
+/* ---------- HERO FLOATING TAGS ABOVE IMAGE ---------- */
+
+.hero-visual{
+  position:relative;
+  isolation:isolate;
+}
+
+.hero-visual .blob{
+  position:absolute;
+  z-index:1;
+}
+
+.hero-visual .blob img{
+  position:relative;
+  z-index:2;
+}
+
+.hero-visual .float-tag{
+  position:absolute;
+  z-index:10 !important;
+}
+
+/* Left floating tag */
+.hero-visual .float-tag.t1{
+  top:8%;
+  left:0;
+  z-index:11 !important;
+}
+
+/* Right floating tag */
+.hero-visual .float-tag.t2{
+  bottom:12%;
+  right:-35px;
+  z-index:11 !important;
+}
