@@ -803,3 +803,31 @@ body.light .contact-visual span{
   right:-35px;
   z-index:11 !important;
 }
+/* ---------- TOOLS LIGHT MODE FIX ---------- */
+
+body.light .tool{
+  background:#ffffff;
+  border:1px solid rgba(17,17,22,.12);
+  box-shadow:0 8px 24px rgba(20,20,40,.08);
+}
+
+body.light .tool i{
+  color:#2563eb;
+}
+
+body.light .tool span{
+  color:#30303a;
+}
+
+body.light .tool:hover{
+  border-color:rgba(37,99,235,.35);
+  box-shadow:0 12px 28px rgba(20,20,40,.12);
+}
+/* ---------- PROJECT IMAGE BADGE - ALWAYS DARK ---------- */
+
+.proj-thumb .badge{
+  background:#000000 !important;
+  color:#ffffff !important;
+  border:1px solid rgba(255,255,255,.15);
+  box-shadow:0 4px 12px rgba(0,0,0,.25);
+}
