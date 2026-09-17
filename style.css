@@ -172,7 +172,7 @@ nav{
 
 .about-top{display:flex;justify-content:space-between;gap:40px;align-items:flex-end;flex-wrap:wrap;}
 .about-top p{color:var(--muted);max-width:480px;font-size:15px;}
-.hand-note{color:var(--green);font-size:22px;margin-top:18px;}
+.hand-note{color:var(--green);font-size:26px;margin-top:18px;}
 
 /* ---------- PROJECTS ---------- */
 .sec-head-row{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:16px;}
