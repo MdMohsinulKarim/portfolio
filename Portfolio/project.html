@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Projects | Md Mohsinul Karim</title>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <nav>
+      <a href="index.html" class="logo">
+        <span class="mark">MK</span>
+        Md Mohsinul Karim
+      </a>
+
+      <div class="nav-actions">
+        <a href="index.html" class="btn btn-outline">
+          <i class="fa-solid fa-arrow-left"></i>
+          Back to Home
+        </a>
+      </div>
+    </nav>
+  </header>
+
+
+  <!-- PROJECTS -->
+  <main>
+
+    <section class="projects-page">
+      <div class="wrap">
+
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">MY WORK</div>
+            <h1>Projects & Creative Work</h1>
+            <p>
+              A collection of my selected projects, designs,
+              experiments, and development work.
+            </p>
+          </div>
+        </div>
+
+
+        <!-- FILTERS -->
+        <div class="filters">
+          <button class="filter active" data-filter="all">All</button>
+          <button class="filter" data-filter="design">Graphic Design</button>
+          <button class="filter" data-filter="branding">Branding</button>
+          <button class="filter" data-filter="web">Web Development</button>
+          <button class="filter" data-filter="iot">IoT</button>
+          <button class="filter" data-filter="uiux">UI/UX</button>
+        </div>
+        <!-- PROJECT SEARCH -->
+        <div class="project-search">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input
+                type="text"
+                id="projectSearch"
+                placeholder="Search projects..."
+                autocomplete="off"
+            >
+        </div>
+        <p class="project-count" id="projectCount">Showing 0 projects</p>
+
+
+        <!-- PROJECT GRID -->
+        <div class="projects-grid">
+
+          <!-- Smart Water Irrigation System -->
+          <article class="project-item" data-category="iot">
+            <div class="project-image">
+              <img src="assets/projects/irrigation.jpg" alt="Smart Irrigation System">
+            </div>
+
+            <div class="project-content">
+              <span class="project-category">IoT</span>
+
+              <h2>Smart Irrigation System</h2>
+
+              <p>
+                IoT-based smart water irrigation and drainage system
+                with weather-aware automation.
+              </p>
+              <div class="tag-row">
+                <span class="tag">ESP8266</span>
+                <span class="tag">Blynk</span>
+                <span class="tag">IoT</span>
+                <span class="tag">Weather API</span>
+                </div>
+
+              <a href="#" class="project-link" target="_blank"
+                 rel="noopener noreferrer">
+                View Project
+                <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+          </article>
+
+
+          <!-- Chitrolota -->
+          <article class="project-item" data-category="branding">
+            <div class="project-image">
+              <img src="assets/projects/chitrolota.jpg"
+                   alt="Chitrolota Branding">
+            </div>
+
+            <div class="project-content">
+              <span class="project-category">Branding</span>
+
+              <h2>Chitrolota</h2>
+
+              <p>
+                Social media and visual content design for a
+                handmade jewelry brand.
+              </p>
+              <div class="tag-row">
+                <span class="tag">Brand Identity</span>
+                <span class="tag">Social Media</span>
+                <span class="tag">Photoshop</span>
+                <span class="tag">Illustrator</span>
+                </div>
+
+              <a href="https://www.behance.net/gallery/242230427/Chitrolota" class="project-link" target="_blank"
+                 rel="noopener noreferrer">
+                View Project
+                <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+          </article>
+
+
+          <!-- Competitive Coders -->
+          <article class="project-item" data-category="branding">
+            <div class="project-image">
+              <img src="assets/projects/competitive-coders.jpg"
+                   alt="Competitive Coders">
+            </div>
+
+            <div class="project-content">
+              <span class="project-category">Branding</span>
+
+              <h2>Competitive Coders</h2>
+
+              <p>
+                Visual identity and certificate design for
+                competitive programming contests.
+              </p>
+              <div class="tag-row">
+                <span class="tag">Branding</span>
+                <span class="tag">Certificate Design</span>
+                <span class="tag">Illustrator</span>
+                <span class="tag">Canva</span>
+             </div>
+
+              <a href="#" class="project-link" target="_blank"
+                 rel="noopener noreferrer">
+                View Project
+                <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+          </article>
+
+
+          <!-- Bortoman -->
+          <article class="project-item" data-category="design">
+            <div class="project-image">
+              <img src="assets/projects/bortoman.jpg"
+                   alt="Bortoman Apparel">
+            </div>
+
+            <div class="project-content">
+              <span class="project-category">Apparel</span>
+
+              <h2>Bortoman</h2>
+
+              <p>
+                Apparel brand concept and visual design created
+                for customized printed products.
+              </p>
+              <div class="tag-row">
+                <span class="tag">Branding</span>
+                <span class="tag">Apparel</span>
+                <span class="tag">Photoshop</span>
+                <span class="tag">Social Media</span>
+             </div>
+
+              <a href="https://www.behance.net/gallery/241055859/Bortoman" class="project-link" target="_blank"
+                 rel="noopener noreferrer">
+                View Project
+                <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+          </article>
+
+
+          <!-- Raznigar Fashion House -->
+          <article class="project-item" data-category="branding">
+            <div class="project-image">
+              <img src="assets/projects/raznigar.jpg"
+                   alt="Raznigar Fashion House">
+            </div>
+
+            <div class="project-content">
+              <span class="project-category">Branding</span>
+
+              <h2>Raznigar Fashion House</h2>
+
+              <p>
+                Logo, social media graphics, banner, and visual
+                branding for a fashion brand.
+              </p>
+              <div class="tag-row">
+                <span class="tag">Brand Identity</span>
+                <span class="tag">Social Media</span>
+                <span class="tag">Photoshop</span>
+                <span class="tag">Illustrator</span>
+             </div>
+
+              <a href="https://www.behance.net/gallery/241000633/Raznigar-Fashion-House" class="project-link" target="_blank"
+                 rel="noopener noreferrer">
+                View Project
+                <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+          </article>
+          <!-- Social Media Poster / Banner Design -->
+            <article class="project-item" data-category="design">
+            <div class="project-image">
+                <img src="assets/projects/social-media-design.jpg" alt="Social Media Poster and Banner Design">
+            </div>
+
+            <div class="project-content">
+                <span class="project-category">GRAPHIC DESIGN</span>
+                <h3>Social Media Poster & Banner Design</h3>
+                <p>
+                Creative social media posters and banner designs created for
+                digital marketing and promotional campaigns.
+                </p>
+                <div class="tag-row">
+                    <span class="tag">Photoshop</span>
+                    <span class="tag">Illustrator</span>
+                    <span class="tag">Social Media</span>
+                    <span class="tag">Banner Design</span>
+                </div>
+
+                <a href="https://www.behance.net/gallery/255506967/Chitrolota-Social-Media-Content-Design" class="project-link" target="_blank">
+                View Project <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+            </article>
+
+
+            <!-- Photo Manipulation -->
+            <article class="project-item" data-category="design">
+            <div class="project-image">
+                <img src="assets/projects/photo-manipulation.jpg" alt="Photo Manipulation">
+            </div>
+
+            <div class="project-content">
+                <span class="project-category">GRAPHIC DESIGN</span>
+                <h3>Photo Manipulation</h3>
+                <p>
+                Creative photo manipulation projects showcasing compositing,
+                color grading, blending, and visual storytelling skills.
+                </p>
+                <div class="tag-row">
+                    <span class="tag">Photoshop</span>
+                    <span class="tag">Photo Manipulation</span>
+                    <span class="tag">Color Grading</span>
+                    <span class="tag">Compositing</span>
+                </div>
+
+                <a href="https://www.behance.net/gallery/241435179/Photo-Manipulations" class="project-link" target="_blank">
+                View Project <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+            </article>
+
+
+            <!-- CybrCoast -->
+            <article class="project-item" data-category="branding">
+            <div class="project-image">
+                <img src="assets/projects/cybrcoast.jpg" alt="CybrCoast">
+            </div>
+
+            <div class="project-content">
+                <span class="project-category">BRANDING</span>
+                <h3>CybrCoast</h3>
+                <p>
+                Brand identity and visual design project created for a
+                technology-focused company.
+                </p>
+                <div class="tag-row">
+                    <span class="tag">Brand Identity</span>
+                    <span class="tag">Logo Design</span>
+                    <span class="tag">Graphic Design</span>
+                    <span class="tag">Illustrator</span>
+                </div>
+
+                <a href="https://www.behance.net/gallery/241144109/CybrCoast" class="project-link" target="_blank">
+                View Project <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+            </article>
+
+
+            <!-- Rayhan Bodybuilding Club -->
+            <article class="project-item" data-category="branding">
+            <div class="project-image">
+                <img src="assets/projects/rbc.jpg" alt="Rayhan Bodybuilding Club">
+            </div>
+
+            <div class="project-content">
+                <span class="project-category">BRANDING</span>
+                <h3>Rayhan Bodybuilding Club</h3>
+                <p>
+                Branding and visual identity design created for Rayhan
+                Bodybuilding Club.
+                </p>
+                <div class="tag-row">
+                    <span class="tag">Logo Design</span>
+                    <span class="tag">Branding</span>
+                    <span class="tag">Photoshop</span>
+                    <span class="tag">Illustrator</span>
+                </div>
+
+                <a href="https://www.behance.net/gallery/241010583/Rayhan-Bodybuilding-Club" class="project-link" target="_blank">
+                View Project <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+            </article>
+
+
+        </div>
+        <div class="empty-projects" id="emptyProjects">
+            <h3>No projects found</h3>
+            <p>No projects are available in this category yet. <br>I'm currently working on new projects in this category. Check back soon.</p>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="wrap">
+      <p>© 2026 Md Mohsinul Karim. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
