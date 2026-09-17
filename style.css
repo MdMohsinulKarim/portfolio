@@ -45,7 +45,11 @@ section{padding:100px 0;}
 
 /* ---------- NAV ---------- */
 header{
-  position:sticky;top:0;z-index:100;
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  z-index:1000;
   background:rgba(8,8,13,.75);
   backdrop-filter:blur(14px);
   border-bottom:1px solid var(--line);
@@ -98,7 +102,7 @@ nav{
 .scrim.show{opacity:1;pointer-events:auto;}
 
 /* ---------- HERO ---------- */
-.hero{padding:80px 0 60px;}
+.hero{padding:70px 0 110px;}
 .hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:50px;align-items:center;}
 .hi{color:var(--muted);font-size:18px;margin-bottom:6px;}
 .hero h1{font-size:clamp(36px,5vw,54px);font-weight:700;line-height:1.08;margin-bottom:14px;}
@@ -260,8 +264,15 @@ nav{
   content:"";position:absolute;left:-37px;top:2px;width:14px;height:14px;border-radius:50%;
   background:var(--green);border:3px solid var(--bg);
 }
-.timeline-item h4{font-size:15.5px;margin-bottom:4px;}
-.timeline-item span{color:var(--muted);font-size:13px;}
+.timeline-item h4{
+  font-size:16.5px;
+  margin-bottom:5px;
+}
+
+.timeline-item span{
+  color:var(--muted);
+  font-size:14px;
+}
 
 /* ---------- APPROACH ---------- */
 .approach-row{display:flex;align-items:center;gap:0;margin-top:50px;flex-wrap:wrap;}
