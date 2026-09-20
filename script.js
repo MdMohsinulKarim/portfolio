@@ -217,3 +217,63 @@ if (revealItems.length) {
     revealObserver.observe(item);
   });
 }
+
+// =========================================================
+// SMART IRRIGATION DEMO INTERACTION
+// =========================================================
+
+const iotValves = document.querySelectorAll('.iot-valve-page');
+
+if (iotValves.length) {
+
+  const progressFill = document.querySelector('.iot-progress-bar span');
+  const progressValue = document.querySelector('.iot-progress-head strong');
+  const progressRemaining = document.querySelector('.iot-progress-head > span');
+  const wateringStatus = document.querySelectorAll('.iot-info-card strong')[3];
+
+  iotValves.forEach(valve => {
+
+    valve.addEventListener('click', () => {
+
+      // Toggle valve
+      valve.classList.toggle('active');
+
+      const state = valve.querySelector('.valve-state');
+
+      // Update ON / OFF text
+      if (valve.classList.contains('active')) {
+        state.textContent = 'ON';
+      } else {
+        state.textContent = 'OFF';
+      }
+
+      // Count active valves
+      const activeValves =
+        document.querySelectorAll('.iot-valve-page.active').length;
+
+      // Calculate progress
+      const progress = activeValves * 25;
+
+      // Update progress bar
+      progressFill.style.width = `${progress}%`;
+
+      // Update percentage
+      progressValue.textContent = `${progress}%`;
+
+      // Update remaining time
+      const remaining = Math.max(0, 48 - (activeValves * 12));
+      progressRemaining.textContent =
+        `${remaining} sec remaining`;
+
+      // Update watering status
+      if (activeValves > 0) {
+        wateringStatus.textContent = 'Active';
+      } else {
+        wateringStatus.textContent = 'Standby';
+      }
+
+    });
+
+  });
+
+}

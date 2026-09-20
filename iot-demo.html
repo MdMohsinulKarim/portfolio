@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Smart Irrigation System | Md Mohsinul Karim</title>
+
+  <!-- Font Awesome -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+  >
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+  <!-- HEADER -->
+
+  <header>
+
+    <nav>
+
+      <a href="index.html" class="logo">
+        <span class="mark">MK</span>
+        Md Mohsinul Karim
+      </a>
+
+
+      <div class="nav-actions">
+
+        <a href="index.html" class="btn btn-outline">
+          <i class="fa-solid fa-arrow-left"></i>
+          Back to Portfolio
+        </a>
+
+      </div>
+
+    </nav>
+
+  </header>
+
+
+  <!-- IOT DEMO -->
+
+  <main>
+
+    <section class="iot-demo-page">
+
+      <div class="wrap">
+
+        <!-- INTRO -->
+
+        <div class="iot-demo-intro">
+
+          <p class="eyebrow-num">IoT Project</p>
+
+          <h1>
+            Smart Irrigation
+            <span>System</span>
+          </h1>
+
+          <p>
+            An interactive simulation of my IoT-based smart water
+            irrigation and drainage system with weather-aware automation.
+          </p>
+
+        </div>
+
+
+        <!-- DASHBOARD -->
+
+        <div class="iot-dashboard-page">
+
+
+          <!-- TOP STATUS -->
+
+          <div class="iot-live-bar">
+
+            <div class="iot-live-status">
+
+              <span class="live-dot"></span>
+
+              <span>System Online</span>
+
+            </div>
+
+
+            <div class="iot-live-mode">
+
+              <i class="fa-solid fa-robot"></i>
+
+              <span>Automatic Mode</span>
+
+            </div>
+
+          </div>
+
+
+          <!-- WEATHER -->
+
+          <div class="iot-weather-card">
+
+            <div class="iot-weather-main">
+
+              <div class="iot-weather-icon">
+
+                <i class="fa-solid fa-cloud-sun"></i>
+
+              </div>
+
+
+              <div>
+
+                <span>Current Weather</span>
+
+                <h3>Partly Cloudy</h3>
+
+              </div>
+
+            </div>
+
+
+            <div class="iot-temperature">
+
+              <strong>28°C</strong>
+
+              <span>Dhaka</span>
+
+            </div>
+
+          </div>
+
+
+          <!-- VALVES -->
+
+          <div class="iot-demo-heading">
+
+            <div>
+
+              <p class="eyebrow-num">Water Control</p>
+
+              <h2>Valve Control</h2>
+
+            </div>
+
+            <span>4 Channels</span>
+
+          </div>
+
+
+          <div class="iot-valves-page">
+
+
+            <!-- VALVE 01 -->
+
+            <button class="iot-valve-page active" data-valve="1">
+
+              <div class="valve-top">
+
+                <span class="valve-number">01</span>
+
+                <span class="valve-state">ON</span>
+
+              </div>
+
+
+              <div class="valve-water">
+
+                <i class="fa-solid fa-droplet"></i>
+
+              </div>
+
+
+              <h3>Valve 01</h3>
+
+              <p>Zone 01</p>
+
+
+              <div class="valve-runtime">
+
+                <span>Runtime</span>
+
+                <strong>10 sec</strong>
+
+              </div>
+
+            </button>
+
+
+            <!-- VALVE 02 -->
+
+            <button class="iot-valve-page" data-valve="2">
+
+              <div class="valve-top">
+
+                <span class="valve-number">02</span>
+
+                <span class="valve-state">OFF</span>
+
+              </div>
+
+
+              <div class="valve-water">
+
+                <i class="fa-solid fa-droplet"></i>
+
+              </div>
+
+
+              <h3>Valve 02</h3>
+
+              <p>Zone 02</p>
+
+
+              <div class="valve-runtime">
+
+                <span>Runtime</span>
+
+                <strong>20 sec</strong>
+
+              </div>
+
+            </button>
+
+
+            <!-- VALVE 03 -->
+
+            <button class="iot-valve-page" data-valve="3">
+
+              <div class="valve-top">
+
+                <span class="valve-number">03</span>
+
+                <span class="valve-state">OFF</span>
+
+              </div>
+
+
+              <div class="valve-water">
+
+                <i class="fa-solid fa-droplet"></i>
+
+              </div>
+
+
+              <h3>Valve 03</h3>
+
+              <p>Zone 03</p>
+
+
+              <div class="valve-runtime">
+
+                <span>Runtime</span>
+
+                <strong>30 sec</strong>
+
+              </div>
+
+            </button>
+
+
+            <!-- VALVE 04 -->
+
+            <button class="iot-valve-page active" data-valve="4">
+
+              <div class="valve-top">
+
+                <span class="valve-number">04</span>
+
+                <span class="valve-state">ON</span>
+
+              </div>
+
+
+              <div class="valve-water">
+
+                <i class="fa-solid fa-droplet"></i>
+
+              </div>
+
+
+              <h3>Valve 04</h3>
+
+              <p>Zone 04</p>
+
+
+              <div class="valve-runtime">
+
+                <span>Runtime</span>
+
+                <strong>40 sec</strong>
+
+              </div>
+
+            </button>
+
+          </div>
+
+
+          <!-- SYSTEM INFO -->
+
+          <div class="iot-info-grid">
+
+
+            <div class="iot-info-card">
+
+              <i class="fa-solid fa-tree"></i>
+
+              <div>
+
+                <span>Plants / Trees</span>
+
+                <strong>24</strong>
+
+              </div>
+
+            </div>
+
+
+            <div class="iot-info-card">
+
+              <i class="fa-solid fa-cloud-rain"></i>
+
+              <div>
+
+                <span>Rain Detection</span>
+
+                <strong>No Rain</strong>
+
+              </div>
+
+            </div>
+
+
+            <div class="iot-info-card">
+
+              <i class="fa-solid fa-clock"></i>
+
+              <div>
+
+                <span>Next Schedule</span>
+
+                <strong>06:30 AM</strong>
+
+              </div>
+
+            </div>
+
+
+            <div class="iot-info-card">
+
+              <i class="fa-solid fa-droplet"></i>
+
+              <div>
+
+                <span>Watering Status</span>
+
+                <strong>Active</strong>
+
+              </div>
+
+            </div>
+
+
+          </div>
+
+
+          <!-- PROGRESS -->
+
+          <div class="iot-progress-page">
+
+            <div class="iot-progress-head">
+
+              <div>
+
+                <span>Current Watering Cycle</span>
+
+                <strong>68%</strong>
+
+              </div>
+
+              <span>24 sec remaining</span>
+
+            </div>
+
+
+            <div class="iot-progress-bar">
+
+              <span style="width:68%"></span>
+            </div>
+
+          </div>
+
+
+          <!-- SYSTEM NOTE -->
+
+          <div class="iot-system-note">
+
+            <i class="fa-solid fa-circle-info"></i>
+
+            <p>
+              This is an interactive portfolio simulation.
+              The dashboard represents the behavior of the actual
+              IoT irrigation system and does not directly control
+              physical hardware.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- Theme Toggle -->
+
+  <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
+    <i class="fa-regular fa-moon"></i>
+  </button>
+
+
+  <!-- Main JS -->
+
+  <script src="script.js"></script>
+
+</body>
+
+</html>
