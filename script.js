@@ -451,3 +451,472 @@ if (activityList && iotValves.length) {
   });
 
 }
+
+// =========================================================
+// SCROLL PROGRESS BAR
+// =========================================================
+
+const scrollProgress = document.getElementById('scrollProgress');
+
+if (scrollProgress) {
+
+  function updateScrollProgress() {
+
+    const scrollTop = window.scrollY;
+
+    const documentHeight =
+      document.documentElement.scrollHeight - window.innerHeight;
+
+    const progress =
+      documentHeight > 0
+        ? (scrollTop / documentHeight) * 100
+        : 0;
+
+    scrollProgress.style.width = `${progress}%`;
+  }
+
+  window.addEventListener('scroll', updateScrollProgress, {
+    passive: true
+  });
+
+  window.addEventListener('resize', updateScrollProgress);
+
+  updateScrollProgress();
+}
+
+// =========================================================
+// ELASTIC PEN TOOL — FINAL INTERACTIVE VERSION
+// =========================================================
+
+const elasticLine =
+  document.getElementById('elasticPenLine');
+
+const elasticHitPath =
+  document.getElementById('elasticHitPath');
+
+const elasticPath =
+  document.getElementById('elasticPath');
+
+if (
+  elasticLine &&
+  elasticHitPath &&
+  elasticPath
+) {
+
+  let dragging = false;
+
+  const startX = 80;
+  const endX = 920;
+  const centerY = 90;
+
+  /* Point where the user originally clicks */
+  let grabX = 500;
+  let grabY = centerY;
+
+
+  /*
+    Draw line while keeping
+    the clicked point attached
+    to the mouse.
+  */
+
+  function drawElastic(mouseX, mouseY) {
+
+    /*
+      Keep the endpoints fixed.
+    */
+
+    const leftX = startX;
+    const rightX = endX;
+
+    /*
+      Calculate how much the
+      clicked point moved.
+    */
+
+    const dx = mouseX - grabX;
+    const dy = mouseY - grabY;
+
+
+    /*
+      The clicked point itself
+      follows the mouse.
+    */
+
+    const pointX =
+      Math.max(
+        leftX + 15,
+        Math.min(
+          rightX - 15,
+          grabX + dx
+        )
+      );
+
+    const pointY =
+      centerY + dy;
+
+
+    /*
+      Strong smooth curve.
+
+      The closer the click is to
+      an endpoint, the smaller the
+      affected section becomes.
+    */
+
+    const leftDistance =
+      pointX - leftX;
+
+    const rightDistance =
+      rightX - pointX;
+
+
+    const leftControlX =
+      leftX +
+      leftDistance * 0.5;
+
+    const rightControlX =
+      pointX +
+      rightDistance * 0.5;
+
+
+    const leftControlY =
+      centerY +
+      (pointY - centerY) * 0.65;
+
+    const rightControlY =
+      centerY +
+      (pointY - centerY) * 0.65;
+
+
+    /*
+      Build two connected curves.
+    */
+
+    const path = `
+      M ${leftX} ${centerY}
+
+      C
+      ${leftControlX} ${leftControlY},
+      ${pointX - leftDistance * 0.18} ${pointY},
+      ${pointX} ${pointY}
+
+      C
+      ${pointX + rightDistance * 0.18} ${pointY},
+      ${rightControlX} ${rightControlY},
+      ${rightX} ${centerY}
+    `;
+
+
+    elasticPath.setAttribute(
+      'd',
+      path
+    );
+
+    elasticHitPath.setAttribute(
+      'd',
+      path
+    );
+  }
+
+
+  /*
+    CLICK ON LINE
+  */
+
+  elasticHitPath.addEventListener(
+    'pointerdown',
+    event => {
+
+      dragging = true;
+
+
+      const rect =
+        elasticLine.getBoundingClientRect();
+
+
+      /*
+        Convert mouse position
+        into SVG coordinates.
+      */
+
+      const x =
+        ((event.clientX - rect.left) /
+        rect.width) * 1000;
+
+      const y =
+        ((event.clientY - rect.top) /
+        rect.height) * 180;
+
+
+      /*
+        Save the exact point
+        where the user clicked.
+      */
+
+      grabX =
+        Math.max(
+          startX + 15,
+          Math.min(
+            endX - 15,
+            x
+          )
+        );
+
+
+      grabY = y;
+
+
+      elasticHitPath.setPointerCapture(
+        event.pointerId
+      );
+
+
+      event.preventDefault();
+
+    }
+  );
+
+
+  /*
+    DRAG
+  */
+
+  elasticHitPath.addEventListener(
+    'pointermove',
+    event => {
+
+      if(!dragging) return;
+
+
+      const rect =
+        elasticLine.getBoundingClientRect();
+
+
+      const mouseX =
+        ((event.clientX - rect.left) /
+        rect.width) * 1000;
+
+
+      const mouseY =
+        ((event.clientY - rect.top) /
+        rect.height) * 180;
+
+
+      /*
+        Calculate movement from
+        the original clicked point.
+      */
+
+      const dx =
+        mouseX - grabX;
+
+      const dy =
+        mouseY - grabY;
+
+
+      /*
+        New point follows mouse.
+      */
+
+      const newX =
+        grabX + dx;
+
+      const newY =
+        grabY + dy;
+
+
+      drawElastic(
+        newX,
+        newY
+      );
+
+    }
+  );
+
+
+  /*
+    RELEASE
+    → ELASTIC BOUNCE
+  */
+
+  elasticHitPath.addEventListener(
+    'pointerup',
+    event => {
+
+      if(!dragging) return;
+
+      dragging = false;
+
+
+      try{
+
+        elasticHitPath.releasePointerCapture(
+          event.pointerId
+        );
+
+      }catch(e){}
+
+
+      /*
+        Get release position.
+      */
+
+      const rect =
+        elasticLine.getBoundingClientRect();
+
+
+      const releaseX =
+        ((event.clientX - rect.left) /
+        rect.width) * 1000;
+
+
+      const releaseY =
+        ((event.clientY - rect.top) /
+        rect.height) * 180;
+
+
+      /*
+        How far the clicked point
+        was stretched.
+      */
+
+      const stretchX =
+        releaseX - grabX;
+
+      const stretchY =
+        releaseY - grabY;
+
+
+      const startTime =
+        performance.now();
+
+
+      const duration =
+        1000;
+
+
+      /*
+        Elastic animation.
+      */
+
+      function bounce(time){
+
+        const elapsed =
+          time - startTime;
+
+
+        const progress =
+          Math.min(
+            elapsed / duration,
+            1
+          );
+
+
+        /*
+          Strong elastic oscillation
+        */
+
+        const decay =
+          Math.exp(
+            -5 * progress
+          );
+
+
+        const wave =
+          Math.cos(
+            progress *
+            Math.PI *
+            7
+          );
+
+
+        const amount =
+          decay * wave;
+
+
+        /*
+          Point returns toward
+          its original position.
+        */
+
+        const x =
+          grabX +
+          stretchX * amount;
+
+
+        const y =
+          grabY +
+          stretchY * amount;
+
+
+        drawElastic(
+          x,
+          y
+        );
+
+
+        if(progress < 1){
+
+          requestAnimationFrame(
+            bounce
+          );
+
+        }else{
+
+          /*
+            Final straight line
+          */
+
+          const normalPath =
+            `M ${startX} ${centerY}
+             C 350 ${centerY},
+               650 ${centerY},
+               ${endX} ${centerY}`;
+
+
+          elasticPath.setAttribute(
+            'd',
+            normalPath
+          );
+
+          elasticHitPath.setAttribute(
+            'd',
+            normalPath
+          );
+
+        }
+
+      }
+
+
+      requestAnimationFrame(
+        bounce
+      );
+
+    }
+  );
+
+
+  /*
+    Initial straight state
+  */
+
+  const normalPath =
+    `M ${startX} ${centerY}
+     C 350 ${centerY},
+       650 ${centerY},
+       ${endX} ${centerY}`;
+
+
+  elasticPath.setAttribute(
+    'd',
+    normalPath
+  );
+
+  elasticHitPath.setAttribute(
+    'd',
+    normalPath
+  );
+
+}

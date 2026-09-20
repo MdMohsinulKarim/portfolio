@@ -1771,3 +1771,251 @@ body.light .iot-live-bar{
   }
 }
 
+/* =========================================================
+   SCROLL PROGRESS BAR
+   ========================================================= */
+
+header{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  z-index:1000;
+}
+
+.scroll-progress{
+  position:absolute;
+  left:0;
+  bottom:0;
+  width:100%;
+  height:3px;
+  background:transparent;
+  overflow:hidden;
+  pointer-events:none;
+}
+
+#scrollProgress{
+  display:block;
+  width:0%;
+  height:100%;
+  background:var(--grad);
+  box-shadow:0 0 10px rgba(124,58,237,.45);
+  transition:width .08s linear;
+}
+
+/* =========================================================
+   ELASTIC PEN TOOL — FINAL
+   ========================================================= */
+
+.elastic-pen-line{
+  position:relative;
+
+  width:min(900px,76%);
+  height:150px;
+
+  margin:0 auto;
+
+  display:block;
+
+  z-index:100;
+
+  overflow:visible;
+
+  user-select:none;
+
+  isolation:isolate;
+}
+
+
+/* SVG */
+
+.elastic-svg{
+  position:absolute;
+
+  left:0;
+  top:0;
+
+  width:100%;
+  height:100%;
+
+  display:block;
+
+  overflow:visible;
+
+  pointer-events:none;
+}
+
+
+/* =========================================================
+   VISIBLE LINE
+   ========================================================= */
+
+.elastic-path{
+  fill:none !important;
+
+  stroke:url(#elasticGradient) !important;
+
+  stroke-width:4px !important;
+
+  stroke-linecap:round !important;
+  stroke-linejoin:round !important;
+
+  opacity:1 !important;
+
+  visibility:visible !important;
+
+  pointer-events:none !important;
+
+  /*
+    IMPORTANT:
+    No SVG filter here.
+    CSS drop-shadow is safer.
+  */
+
+  filter:
+    drop-shadow(0 0 4px rgba(168,85,247,.75))
+    drop-shadow(0 0 10px rgba(99,102,241,.50))
+    drop-shadow(0 0 18px rgba(34,211,238,.25));
+}
+
+
+/* =========================================================
+   INVISIBLE CLICK AREA
+   ========================================================= */
+
+.elastic-hit-path{
+  fill:none !important;
+
+  stroke:transparent !important;
+
+  stroke-width:36px !important;
+
+  stroke-linecap:round !important;
+
+  pointer-events:stroke !important;
+
+  cursor:grab;
+
+  touch-action:none;
+}
+
+.elastic-hit-path:active{
+  cursor:grabbing;
+}
+
+
+/* =========================================================
+   LEFT SQUARE
+   ========================================================= */
+
+.elastic-anchor{
+  position:absolute;
+
+  left:calc(8% - 9px);
+  top:calc(50% - 9px);
+
+  width:18px;
+  height:18px;
+
+  box-sizing:border-box;
+
+  background:#111116;
+
+  border:2px solid #a855f7;
+
+  border-radius:3px;
+
+  z-index:10;
+
+  pointer-events:none;
+
+  box-shadow:
+    0 0 0 4px rgba(168,85,247,.08),
+    0 0 16px rgba(168,85,247,.60);
+}
+
+
+/* =========================================================
+   PEN TOOL
+   ========================================================= */
+
+.elastic-pen{
+  position:absolute;
+
+  right:calc(8% - 8px);
+  top:calc(50% - 18px);
+
+  display:flex;
+
+  align-items:center;
+  justify-content:center;
+
+  color:#ffffff;
+
+  font-size:24px;
+
+  transform:rotate(-18deg);
+
+  z-index:10;
+
+  pointer-events:none;
+
+  background:none;
+  border:none;
+  box-shadow:none;
+
+  text-shadow:
+    0 0 6px rgba(168,85,247,.95),
+    0 0 14px rgba(99,102,241,.75),
+    0 0 25px rgba(34,211,238,.45);
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media(max-width:768px){
+
+  .elastic-pen-line{
+    width:90%;
+    height:125px;
+  }
+
+  .elastic-path{
+    stroke-width:3.5px !important;
+  }
+
+  .elastic-anchor{
+    width:16px;
+    height:16px;
+
+    left:calc(8% - 8px);
+    top:calc(50% - 8px);
+  }
+
+  .elastic-pen{
+    right:calc(8% - 6px);
+    font-size:21px;
+  }
+
+}
+
+
+@media(max-width:560px){
+
+  .elastic-pen-line{
+    width:94%;
+    height:110px;
+  }
+
+  .elastic-anchor{
+    left:calc(8% - 7px);
+  }
+
+  .elastic-pen{
+    right:calc(8% - 5px);
+    font-size:20px;
+  }
+
+}

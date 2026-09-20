@@ -64,6 +64,9 @@
       <button class="hamburger" id="openDrawer" aria-label="Open menu"><i class="fa-solid fa-bars"></i></button>
     </div>
   </nav>
+  <div class="scroll-progress">
+    <span id="scrollProgress"></span>
+  </div>
 </header>
 
 <!-- HERO -->
@@ -92,6 +95,66 @@
       <div class="float-tag t1">Design<br>Code<br>Create<br>Innovate</div>
       <div class="float-tag t2">CSE + Design + Tech<br><b>= Better Solutions</b></div>
     </div>
+  </div>
+  <!-- ELASTIC PEN TOOL LINE -->
+  <div class="elastic-pen-line" id="elasticPenLine">
+
+    <svg
+      class="elastic-svg"
+      viewBox="0 0 1000 180"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+
+      <defs>
+
+        <linearGradient
+          id="elasticGradient"
+          gradientUnits="userSpaceOnUse"
+          x1="80"
+          y1="90"
+          x2="920"
+          y2="90"
+        >
+          <stop offset="0%" stop-color="#a855f7"/>
+          <stop offset="50%" stop-color="#6366f1"/>
+          <stop offset="100%" stop-color="#22d3ee"/>
+        </linearGradient>
+
+      </defs>
+
+
+      <!-- INVISIBLE DRAG AREA -->
+      <path
+        id="elasticHitPath"
+        class="elastic-hit-path"
+        d="M 80 90 C 350 90, 650 90, 920 90"
+      />
+
+
+      <!-- VISIBLE LINE -->
+      <path
+        id="elasticPath"
+        class="elastic-path"
+        d="M 80 90 C 350 90, 650 90, 920 90"
+        fill="none"
+        stroke="url(#elasticGradient)"
+        stroke-width="4"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+
+    </svg>
+
+
+    <!-- LEFT SQUARE -->
+    <span class="elastic-anchor"></span>
+
+
+    <!-- RIGHT PEN TOOL -->
+    <span class="elastic-pen">
+      <i class="fa-solid fa-pen-nib"></i>
+    </span>
+
   </div>
 </section>
 
