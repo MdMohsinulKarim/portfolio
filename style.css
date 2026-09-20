@@ -1855,7 +1855,7 @@ header{
 
   stroke:url(#elasticGradient) !important;
 
-  stroke-width:4px !important;
+  stroke-width:2px !important;
 
   stroke-linecap:round !important;
   stroke-linejoin:round !important;
@@ -1941,23 +1941,19 @@ header{
 
 .elastic-pen{
   position:absolute;
-
-  right:calc(8% - 8px);
-  top:calc(50% - 18px);
+  right:calc(8% - 15px);
+  top:calc(50% - 10px);
 
   display:flex;
-
   align-items:center;
   justify-content:center;
 
   color:#ffffff;
-
   font-size:24px;
 
-  transform:rotate(-18deg);
+  transform:translateY(-50%) rotate(-18deg);
 
   z-index:10;
-
   pointer-events:none;
 
   background:none;
@@ -1995,7 +1991,8 @@ header{
   }
 
   .elastic-pen{
-    right:calc(8% - 6px);
+    right:calc(8% - 20px);
+    top:calc(50% - 10px);
     font-size:21px;
   }
 
@@ -2014,7 +2011,8 @@ header{
   }
 
   .elastic-pen{
-    right:calc(8% - 5px);
+    right:calc(8% - 20px);
+    top:calc(50% - 10px);
     font-size:20px;
   }
 
