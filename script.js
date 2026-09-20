@@ -277,3 +277,177 @@ if (iotValves.length) {
   });
 
 }
+
+// =========================================================
+// SMART IRRIGATION — AUTOMATIC WATERING CYCLE
+// =========================================================
+
+if (iotValves.length) {
+
+  let wateringProgress = 68;
+  let wateringTimer = null;
+
+  const progressFill =
+    document.querySelector('.iot-progress-bar span');
+
+  const progressValue =
+    document.querySelector('.iot-progress-head strong');
+
+  const progressRemaining =
+    document.querySelector('.iot-progress-head > span');
+
+  const wateringStatus =
+    document.querySelectorAll('.iot-info-card strong')[3];
+
+  function updateWateringCycle() {
+
+    const activeValves =
+      document.querySelectorAll('.iot-valve-page.active').length;
+
+    // No active valve
+    if (activeValves === 0) {
+      clearInterval(wateringTimer);
+
+      wateringStatus.textContent = 'Standby';
+      progressRemaining.textContent = 'System paused';
+
+      return;
+    }
+
+    // Start / continue cycle
+    wateringStatus.textContent = 'Active';
+
+    wateringProgress += 1;
+
+    if (wateringProgress > 100) {
+      wateringProgress = 0;
+    }
+
+    progressFill.style.width = `${wateringProgress}%`;
+    progressValue.textContent = `${wateringProgress}%`;
+
+    const remainingSeconds =
+      Math.max(0, Math.round((100 - wateringProgress) * 0.7));
+
+    progressRemaining.textContent =
+      `${remainingSeconds} sec remaining`;
+  }
+
+  function startWateringCycle() {
+
+    clearInterval(wateringTimer);
+
+    wateringTimer = setInterval(() => {
+      updateWateringCycle();
+    }, 1000);
+  }
+
+  // Start automatically if any valve is already ON
+  if (
+    document.querySelectorAll('.iot-valve-page.active').length
+  ) {
+    startWateringCycle();
+  }
+
+  // Restart cycle whenever valve state changes
+  iotValves.forEach(valve => {
+
+    valve.addEventListener('click', () => {
+
+      const activeValves =
+        document.querySelectorAll('.iot-valve-page.active').length;
+
+      if (activeValves > 0) {
+        startWateringCycle();
+      } else {
+        clearInterval(wateringTimer);
+      }
+
+    });
+
+  });
+
+}
+
+// =========================================================
+// SMART IRRIGATION — LIVE ACTIVITY LOG
+// =========================================================
+
+const activityList = document.getElementById('iotActivityList');
+
+if (activityList && iotValves.length) {
+
+  function getCurrentTime() {
+    const now = new Date();
+
+    return now.toLocaleTimeString([], {
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit'
+    });
+  }
+
+  function addActivity(title, description, icon = 'fa-droplet') {
+
+    const activity = document.createElement('div');
+
+    activity.className = 'iot-activity-item';
+
+    activity.innerHTML = `
+      <span class="activity-icon">
+        <i class="fa-solid ${icon}"></i>
+      </span>
+
+      <div>
+        <strong>${title}</strong>
+        <span>${description}</span>
+      </div>
+
+      <time>${getCurrentTime()}</time>
+    `;
+
+    // Add newest activity at the top
+    activityList.prepend(activity);
+
+    // Keep only latest 5 activities
+    const activities =
+      activityList.querySelectorAll('.iot-activity-item');
+
+    if (activities.length > 5) {
+      activities[activities.length - 1].remove();
+    }
+  }
+
+  iotValves.forEach(valve => {
+
+    valve.addEventListener('click', () => {
+
+      const valveNumber =
+        valve.dataset.valve;
+
+      const isActive =
+        valve.classList.contains('active');
+
+      if (isActive) {
+
+        addActivity(
+          `Valve ${valveNumber} activated`,
+          `Water flow started for Zone ${valveNumber}`,
+          'fa-droplet'
+        );
+
+      } else {
+
+        addActivity(
+          `Valve ${valveNumber} deactivated`,
+          `Water flow stopped for Zone ${valveNumber}`,
+          'fa-power-off'
+        );
+
+      }
+
+    });
+
+  });
+
+}
